@@ -8,7 +8,7 @@ import (
 )
 
 // detectFaces is a function to perform face detection on a given image file.
-func detectFaces(imageFile string, xmlFile string) error {
+func detectFaces(imageFile string, xmlFile string, outputFile string) error {
 	// color for the rect when faces detected
 	blue := color.RGBA{0, 0, 255, 0}
 
@@ -39,7 +39,6 @@ func detectFaces(imageFile string, xmlFile string) error {
 	}
 
 	// Save the result image to a file
-	outputFile := "output.jpg"
 	gocv.IMWrite(outputFile, img)
 	fmt.Printf("saved to %s\n", outputFile)
 
@@ -47,11 +46,12 @@ func detectFaces(imageFile string, xmlFile string) error {
 }
 
 func main() {
-	imageFile := "images/01.png"
+	imageFile := "images/10.png"
 	xmlFile := "data/haarcascade_frontalface_default.xml"
+	outputFile := "output_10.jpg"
 
 	// call the detectFaces function
-	err := detectFaces(imageFile, xmlFile)
+	err := detectFaces(imageFile, xmlFile, outputFile)
 	if err != nil {
 		fmt.Println(err)
 	}
